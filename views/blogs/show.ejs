@@ -1,0 +1,53 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+<div class="card mb-3" id="blog-post">
+  <div class="card-body">
+    <h2 class="card-title"><%= blog.title %></h2>
+    <p class="card-text"><small class="text-muted"><h4><i style='font-size:24px' class='fas'>&#xf406;</i>  Author - <%= blog.author.username %></h4></small></p>
+    <p class="card-text"><small class="text-muted"><h4><i style='font-size:24px' class='fas'>&#xf783;</i>  <%= blog.created.toDateString() %></h4></small></p>
+  </div>
+  <img src="<%= blog.image %>" class="card-img-top" style="height: 80%; width: 90%; margin: auto auto;" alt="Blog Image">
+  <div class="card-body">
+    <p class="card-text"><%- blog.content %></p>
+  </div>
+  <% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
+    <a class="btn btn-warning btn-sm" style="width: 50px; margin-left: 2%;" href="/blogs/<%= blog._id %>/edit">Edit</a>
+  <form id="delete-form" style="float: left;margin-left: 2%;margin-top: 5px; margin-bottom: 5px;" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+     <button class="btn btn-danger" style="display: inline;">Delete</button>
+  </form>
+  <% } %>
+</div>
+
+</div>
+
+ 
+<div class="container">
+  <div class="well">
+    <div class="text-right">
+      <a class="btn btn-primary" href="/blogs/<%= blog._id %>/comments/new">Add New Comment</a>
+    </div>
+    <hr>
+    <% blog.comments.forEach(function(comment){ %>
+      <div class="row">
+        <div class="col-md-12">
+          <i style='font-size:24px' class='far'>&#xf007;</i>
+             <strong><%= comment.author.username %></strong>
+          <p>
+            <i style='font-size:24px' class='fas'>&#xf075;</i>    <%= comment.text %>
+         </p>
+         <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+             <a class="btn btn-warning" style="width: 60px; margin-left: 2%;" href="/blogs/<%= blog._id %>/comments/<%= comment._id %>/edit">Edit</a>
+             <form style="float: left;margin-left: 2%; " action="/blogs/<%= blog._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+              <button class="btn btn-danger" style="width: 100px;">Delete</button>   
+             <form>
+        <% } %> 
+        </div>
+      </div>    
+    <% }); %>  
+  </div>
+    <a class="btn btn-primary" style="margin: 10px;" href="/blogs">Go Back!</a>
+</div>
+
+
+<%- include('../partials/footer') %>

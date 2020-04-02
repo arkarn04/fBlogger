@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10" id="new-blog">
+        <h3 style="margin: 25px;color: darkcyan;"><i style='font-size:24px' class='fas'>&#xf271;</i>  Upload a new Blog</h3>
+        <hr>
+        <form action="/blogs" method="POST">
+            <div class="form-group">
+                <input class="form-control" type="text" name="title" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="image" placeholder="Image URL">
+            </div>
+            <div class="form-group">
+            <textarea class="form-control" name="content" placeholder="Content"></textarea>
+            </div>
+            <div class="form-group">
+            <input class="form-control btn btn-primary" type="submit" value="Submit">
+            </div>
+            <div style="text-align: center;">
+              <a href="/blogs">Go Back!</a>
+            </div>
+         </form>
+    </div>   
+</div>
+ 
+<script>
+  CKEDITOR.replace('content');
+</script>
+
+<%- include('../partials/footer') %>

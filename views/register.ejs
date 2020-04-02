@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10" id="signup-box" style="background-color: rgba(220,220,220,0.5);">
+        <h3 style="text-align: center;">Register here to Signup </h3>
+         <h2 style="text-align: center; margin-bottom:4%;margin-top: 2%;"><i class='fab fa-centercode' style='font-size:48px;color:red'></i>  fBlogger</h2>
+         <form action="/register" method="POST">
+            <div class="form-group">
+                <input class="form-control" type="text" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input class="btn btn-success form-control" type="submit" value="Signup">
+            </div> 
+            <hr>
+            <p style="text-align: center;">Already Registered!<span><a href="/login">  Login</a></span></p>
+        </form>
+    </div>
+</div>
+
+
+
+<%- include('partials/footer') %>

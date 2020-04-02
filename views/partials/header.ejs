@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>fBlogger</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+        <style type="text/css">
+        /* common */
+          body{
+                background-image: url(https://images.unsplash.com/photo-1527064563585-6c7b2c1c3690?ixlib=rb-1.2.1);
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+            }
+            /* login */
+            #login-box{
+                padding:10px;
+                margin: 150px auto;
+                border-radius: 5px;
+            }
+            /* signup */
+            #signup-box{
+                padding:10px;
+                margin: 150px auto;
+                border-radius: 5px;
+            }
+            /* blog-index */
+            /* blog-show */
+            #blog-post{
+              background-color: rgba(255,255,255,0.8);
+            }
+            /* blog-new */
+            #new-blog{
+                padding:10px;
+                margin: 150px auto;
+                border-radius: 5px;
+                background-color: rgba(220,220,220,0.3);
+            }
+            /* blog-edit */
+            #edit-blog{
+                padding:10px;
+                margin: 150px auto;
+                border-radius: 5px;
+                background-color: rgba(220,220,220,0.3);
+            }
+            /* comment-new */
+            #comment-add{
+                padding: 5%;
+                margin:  150px auto;
+                background-color: rgba(220,220,220,0.3);
+                border-radius: 10px;
+            }
+            /* comment-edit */
+            #comment-edit{
+                padding: 5%;
+                margin:  150px auto;
+                background-color: rgba(220,220,220,0.3);
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+      <header>  
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+          <div class="container">
+            <a class="navbar-brand" href="/">fBlogger</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-lg-auto">
+                <% if(!currentUser){ %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/blogs/new"><i style='font-size:24px' class='fas'>&#xf303;</i>
+                      Write</a>
+                  </li> 
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/login"><i style='font-size:24px' class='fas'>&#xf2c1;</i>
+                      Login <span class="sr-only">(current)</span></a>
+                  </li>
+                <% }  else{ %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/blogs"><i style='font-size:24px' class='fas'>&#xf015;</i>Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/blogs/new"><i style='font-size:24px' class='fas'>&#xf303;</i>Write</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i style='font-size:24px' class='far'>&#xf007;</i>User</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/logout"><i style='font-size:24px' class='fas'>&#xf011;</i>Logout</a>
+                    </li> 
+                <% } %>              
+              </ul>   
+            </div>
+        </div>  
+          </nav>
+        </header>
+
+        <div class="container">
+          <% if(error && error.length > 0){ %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+              <%= error %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <% } %>
+          <% if(success && success.length > 0){ %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <%= success %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <% } %>
+        </div>

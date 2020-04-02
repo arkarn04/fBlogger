@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10" id="comment-add">
+        <h3 style="color: darkcyan; margin-bottom: 15px;">Comments:-</h3>
+        <hr>
+        <form action="/blogs/<%= blog.id %>/comments" method="POST">
+            <div class="form-group">
+                <textarea class="form-control" name="comment[text]" rows="10" placeholder="Write your comment here!!!"></textarea>
+            </div>      
+            <!-- <input type="text" name="comment[author]" value="<%=  %>"> -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <input class="btn btn-warning" type="submit" value="Add">
+                </div>
+                <div class="col-lg-6" style="text-align: right;">
+                    <a style="color: black;" href="/blogs/<%= blog._id %>">Go Back!!!</a>       
+                </div>
+            </div>           
+        </form>       
+    </div>
+    
+    
+</div>
+
+<%- include('../partials/footer') %>
