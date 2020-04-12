@@ -14,7 +14,9 @@ var express               = require("express"),
     seedDB                = require("./seeds");
 
 var compression = require("compression");
+var helmet = reuire("helmet");
 app.use(compression());    
+app.use(helmet());
 
 //requiring routes    
 var blogRoutes    = require("./routes/blogs"),
