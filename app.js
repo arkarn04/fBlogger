@@ -11,7 +11,10 @@ var express               = require("express"),
     Blog                  = require("./models/blog"),
     Comment               = require("./models/comment"),
     User                  = require("./models/user"),
-    seedDB                = require("./seeds");
+    seedDB                = require("./seeds"),
+    path                  = require("path");
+
+console.log("Directory name: ", __dirname)
 
 var compression = require("compression");
 var helmet = require("helmet");
